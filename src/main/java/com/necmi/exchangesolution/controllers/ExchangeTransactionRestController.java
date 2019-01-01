@@ -22,7 +22,7 @@ public class ExchangeTransactionRestController {
 	@Autowired
 	ExchangeTransactionRepository repository;
 	
-	@GetMapping
+	@GetMapping 
 	public List<ExchangeTransaction> getTransactions() {
 		return repository.findAll();
 	}
