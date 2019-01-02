@@ -46,6 +46,9 @@ public class ExchangeTransactionRestController {
 		return repository.save(transaction);
 	}
 	
+	/**
+	 * Conversion List API
+	 */
 	@GetMapping("/bydate/{transactionDate:[0-9]+}")
 	public List<ExchangeTransaction> getTransactionByDate(@PathVariable String transactionDate) throws ParseException {
 		Date date=new SimpleDateFormat("yyyyMMdd").parse(transactionDate);  
