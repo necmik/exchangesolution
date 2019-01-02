@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="exc_transaction")
@@ -19,6 +21,7 @@ public class ExchangeTransaction {
 	@Column(name="transaction_id")
 	private Long transactionId;
 	@Column(name="transaction_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date transactionDate;
 	@Column(name="from_currency")
 	private String fromCurrency;

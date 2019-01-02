@@ -1,5 +1,7 @@
 package com.necmi.exchangesolution.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -44,9 +46,9 @@ public class ExchangeTransactionRestController {
 		return repository.save(transaction);
 	}
 	
-	@GetMapping("/{transactionDate:^\\\\d{4}-\\\\d{2}-\\\\d{2}$}")
-	public List<ExchangeTransaction> getTransactionByDate(@PathVariable Date transactionDate) {
-		List<ExchangeTransaction> transactions = repository.findByTransactionDate(transactionDate);
-		return transactions;
+	@GetMapping("/bydate/{transactionDate:[0-9]+}")
+	public List<ExchangeTransaction> getTransactionByDate(@PathVariable String transactionDate) throws ParseException {
+		Date date=new SimpleDateFormat("yyyyMMdd").parse(transactionDate);  
+		return repository.findByTransactionDate(date);
 	}
 }
