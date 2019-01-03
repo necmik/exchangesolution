@@ -21,7 +21,7 @@ insert into exc_transaction (
  buy_amount
 ) values (1,
 '2019-01-01 20:00:00',
-'TRL',
+'TRY',
 'USD',
 10000,
 1980
@@ -36,7 +36,7 @@ insert into exc_transaction (
  buy_amount
 ) values (2,
 '2019-01-01 21:00:00',
-'TRL',
+'TRY',
 'USD',
 50000,
 9000
