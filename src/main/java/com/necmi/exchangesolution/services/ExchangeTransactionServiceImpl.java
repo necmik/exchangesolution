@@ -35,7 +35,7 @@ public class ExchangeTransactionServiceImpl implements ExchangeTransactionServic
 	}
 
 	@Override
-	public ExchangeTransaction getTransactionById(Long transactionId) {
+	public ExchangeTransaction findTransactionById(Long transactionId) {
 		Optional<ExchangeTransaction> transaction = repository.findById(transactionId);
 		if (transaction.isPresent()) {
 			return transaction.get();
@@ -44,7 +44,7 @@ public class ExchangeTransactionServiceImpl implements ExchangeTransactionServic
 	}
 
 	@Override
-	public List<ExchangeTransaction> getTransactionListByDate(@Param("transactionDate") Date transactionDate) {
+	public List<ExchangeTransaction> findTransactionListByDate(@Param("transactionDate") Date transactionDate) {
 		List<ExchangeTransaction> transactions = repository.findByTransactionDate(transactionDate);
 		return transactions;
 	}

@@ -81,6 +81,23 @@ public class CurrencyLayerRestClientImpl implements CurrencyLayerRestClient {
 	 * Conversion API
 	 */
 	public ConversionResponse convertAmount(BigDecimal sourceAmount, String sourceCurrency, String targetCurrency) {
+
+		ConversionResponse response = new ConversionResponse();
+		ExchangeRateResponse rateResponse = getExchangeRate(sourceCurrency, targetCurrency);
+		if (rateResponse.isSuccess()) {
+			response.setSuccess(true);
+			BigDecimal conversionResult = sourceAmount.multiply(rateResponse.getRate());
+			response.setTargetAmount(conversionResult);
+		} else {
+			response.setSuccess(false);
+			response.setErrorCode(rateResponse.getErrorCode());
+			response.setErrorInfo(rateResponse.getErrorInfo());
+		}
+		return response;
+		
+		/*
+		 * apilayer da convert API'si ücretli oldugundan asagidaki kisim commentlendi. Yerine exchangeRate API si cagrilarak manuel hesaplama yapildi.
+		 * 
 		HttpGet get = new HttpGet(BASE_URL + CONVERT_ENDPOINT + "?access_key=" + ACCESS_KEY + "&from=" + sourceCurrency + "&to=" + targetCurrency + "&amount=" + sourceAmount);
 		ConversionResponse response = new ConversionResponse();
 		try {
@@ -118,6 +135,7 @@ public class CurrencyLayerRestClientImpl implements CurrencyLayerRestClient {
 			response.setErrorInfo("An error occured while converting the currency to target currency");
 		}
 		return response;
+		*/
 	}
 
 }

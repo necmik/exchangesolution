@@ -20,11 +20,26 @@ insert into exc_transaction (
  sell_amount,
  buy_amount
 ) values (1,
-sysdate(),
+'2019-01-01 20:00:00',
 'TRL',
 'USD',
 10000,
 1980
-)
+);
+
+insert into exc_transaction (
+ transaction_id,
+ transaction_date,
+ from_currency,
+ to_currency,
+ sell_amount,
+ buy_amount
+) values (2,
+'2019-01-01 21:00:00',
+'TRL',
+'USD',
+50000,
+9000
+);
 
 select * from exc_transaction;

@@ -9,7 +9,7 @@ import com.necmi.exchangesolution.entities.ExchangeTransaction;
 public interface ExchangeTransactionService {
 	
 	public ExchangeTransaction createTransaction(ExchangeTransactionRequest request);
-	public ExchangeTransaction getTransactionById(Long transactionId);
-	public List<ExchangeTransaction> getTransactionListByDate(Date transactionDate);
+	public ExchangeTransaction findTransactionById(Long transactionId);
+	public List<ExchangeTransaction> findTransactionListByDate(Date transactionDate);
 
 }

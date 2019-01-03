@@ -13,7 +13,7 @@ import com.necmi.exchangesolution.integration.dto.ExchangeRateResponse;
 
 @RestController
 @RequestMapping("/currency")
-public class ExchangeRatesRestController {
+public class CurrencyLayerClientRestController {
 
 	@Autowired
 	CurrencyLayerRestClient currencyLayer;
